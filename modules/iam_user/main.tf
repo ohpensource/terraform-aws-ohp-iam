@@ -20,6 +20,13 @@ resource "aws_iam_user_policy" "main" {
   policy = var.iam_user_policy
 }
 
+resource "aws_iam_policy_attachment" "main" {
+  count      = length(var.managed_policy_arns)
+  name       = var.iam_user_name
+  users      = [var.iam_user_name]
+  policy_arn = var.managed_policy_arns[count.index]
+}
+
 resource "aws_secretsmanager_secret" "main" {
   count       = local.create_secret
   name        = aws_iam_user.main.name

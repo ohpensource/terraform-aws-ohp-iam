@@ -20,6 +20,7 @@ No Modules.
 | Name |
 |------|
 | [aws_iam_access_key](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_access_key) |
+| [aws_iam_policy_attachment](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy_attachment) |
 | [aws_iam_user](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_user) |
 | [aws_iam_user_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_user_policy) |
 | [aws_secretsmanager_secret](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/secretsmanager_secret) |
@@ -34,6 +35,7 @@ No Modules.
 | attach\_user\_policy | Boolean - attach iam policy to user | `bool` | `false` | no |
 | create\_secret | Boolean - create secret manager resource for Access/Secret keys | `bool` | `false` | no |
 | iam\_user\_policy | (Optional) IAM policy to attach to user | `string` | `null` | no |
+| managed\_policy\_arns | (Optional) A list of managed IAM policy arns to attach to the user | `list(any)` | `[]` | no |
 
 ## Outputs
 

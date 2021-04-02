@@ -25,3 +25,9 @@ variable "create_secret" {
   description = "Boolean - create secret manager resource for Access/Secret keys"
   default     = false
 }
+
+variable "managed_policy_arns" {
+  type        = list(any)
+  description = "(Optional) A list of managed IAM policy arns to attach to the user"
+  default     = []
+}
