@@ -20,10 +20,16 @@ resource "aws_iam_user_policy" "main" {
   policy = var.iam_user_policy
 }
 
-resource "aws_iam_policy_attachment" "main" {
+# resource "aws_iam_policy_attachment" "main" {
+#   count      = length(var.managed_policy_arns)
+#   name       = aws_iam_user.main.namez
+#   users      = [var.iam_user_name]
+#   policy_arn = var.managed_policy_arns[count.index]
+# }
+
+resource "aws_iam_user_policy_attachment" "main" {
   count      = length(var.managed_policy_arns)
-  name       = var.iam_user_name
-  users      = [var.iam_user_name]
+  user       = aws_iam_user.main.name
   policy_arn = var.managed_policy_arns[count.index]
 }
 
