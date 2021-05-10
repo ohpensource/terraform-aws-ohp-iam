@@ -6,8 +6,8 @@ resource "aws_iam_user" "main" {
   name = var.iam_user_name
   tags = merge(
     var.tags,
-    map(
-      "Name", var.iam_user_name
+    tomap(
+      { "Name" = var.iam_user_name }
     )
   )
 }
@@ -39,8 +39,8 @@ resource "aws_secretsmanager_secret" "main" {
   description = "${aws_iam_user.main.name} Access/Secret keys"
   tags = merge(
     var.tags,
-    map(
-      "Name", aws_iam_user.main.name
+    tomap(
+      { "Name" = aws_iam_user.main.name }
     )
   )
 }
