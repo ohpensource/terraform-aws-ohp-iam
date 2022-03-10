@@ -46,12 +46,12 @@ resource "aws_secretsmanager_secret_version" "main" {
     SecretKey = aws_iam_access_key.main.secret
   })
 
-  dynamic "lifecycle_rule" {
+  dynamic lifecycle {
     for_each = var.ignore_changes_to_secrets ? [1] : []
     content {
-      lifecycle {
-        ignore_changes = [secret_string]
-      }
+      # lifecycle {
+      ignore_changes = [secret_string]
+      # }
     }
   }
 }
